@@ -1,4 +1,4 @@
-/*! 
+/* ! 
  * Primitive UI | MIT License
  *
  * A minimalist front-end design toolkit built with Sass for developing 
@@ -564,8 +564,8 @@ dd {
 .container,
 .small-container,
 .medium-container {
-  max-width: 1200px;
-  padding: 0 1rem;
+  max-width: 100%;
+  /* padding: 0 1rem; */
   margin-left: auto;
   margin-right: auto;
 }
@@ -1117,6 +1117,9 @@ caption {
 
 .contain-table {
   overflow-x: auto;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (min-width: 600px) {

@@ -11,7 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 function Header({ setIsAdding }) {
     return (
-        <Box sx={{ flexGrow: 1, marginBottom:'30px' }}>
+        <Box sx={{ flexGrow: 1, marginBottom:'30px', width: '100%' }}>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton

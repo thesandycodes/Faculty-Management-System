@@ -5,6 +5,7 @@ import Header from './Header';
 import List from './List';
 import Add from './Add';
 import Edit from './Edit';
+import '../../App.css';
 
 // import { employeesData } from '../../data';
 
@@ -34,6 +35,32 @@ function Dashboard() {
         setIsEditing(true);
     }
 
+    // const handleDelete = (id) => {
+    //     Swal.fire({
+    //         icon: 'warning',
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this!",
+    //         showCancelButton: true,
+    //         confirmButtonText: 'Yes, delete it!',
+    //         cancelButtonText: 'No, cancel!',
+    //     }).then(result => {
+    //         if (result.value) {
+    //             const [employee] = employees.filter(employee => employee.id === id);
+
+    //             Swal.fire({
+    //                 icon: 'success',
+    //                 title: 'Deleted!',
+    //                 text: `${employee.firstName} ${employee.lastName}'s data has been deleted.`,
+    //                 showConfirmButton: false,
+    //                 timer: 1500,
+    //             });
+
+    //             setEmployees(employees.filter(employee => employee.id !== id));
+    //         }
+    //     });
+    // }
+
+
     const handleDelete = (id) => {
         Swal.fire({
             icon: 'warning',
@@ -44,21 +71,34 @@ function Dashboard() {
             cancelButtonText: 'No, cancel!',
         }).then(result => {
             if (result.value) {
-                const [employee] = employees.filter(employee => employee.id === id);
-
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Deleted!',
-                    text: `${employee.firstName} ${employee.lastName}'s data has been deleted.`,
-                    showConfirmButton: false,
-                    timer: 1500,
+                const employeeD = employees.find(employee => employee.id === id);
+                fetch('http://localhost:8000/employees/'+id,{
+                    method: 'DELETE',
+                })
+                .then(res =>{
+                    if(res.ok){
+                        return res.json();
+                    } else {
+                        throw new Error('Error deleting');
+                    }
+                })
+                .then(data => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Deleted!',
+                        text: `${employeeD.firstName} ${employeeD.lastName}'s data has been deleted.`,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    setEmployees(employees.filter(employee => employee.id !== id));
                 });
 
-                setEmployees(employees.filter(employee => employee.id !== id));
+                
+
+                
             }
         });
     }
-
 
     return (
         <div className='container'>

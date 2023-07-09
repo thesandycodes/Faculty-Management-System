@@ -23,22 +23,6 @@
       "email": "ef@example.com",
       "salary": "35000",
       "date": "2019-04-22"
-    },
-    {
-      "id": 4,
-      "firstName": "I",
-      "lastName": "J",
-      "email": "ij@gmail.com",
-      "salary": "2000",
-      "date": "2024-11-04"
-    },
-    {
-      "id": 5,
-      "firstName": "G",
-      "lastName": "H",
-      "email": "gh@gmail.com",
-      "salary": "1000",
-      "date": "2003-10-20"
     }
   ]
 }
